@@ -1,0 +1,38 @@
+<div class="container">
+
+	<h2 class="new-section-title">BOOKS</h1>
+	<table>
+		<thead>
+			<tr>
+				<td><p class="books_title">title</p></td>
+				<td><p class="books_body"></p>Comment</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @books.each do |book| %>
+				<tr>
+					<td>A <%= book.title %></td>
+					<td>B <%= truncate(book.body, length: 15) %></td>
+					<td>
+						<%= link_to "[Show]", book_path(book) %>
+						<%= link_to "[edit]", edit_book_path(book) %>
+						<%= link_to "[delete]", book_path(book), method: :delete %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<h2 class="new-section-title">NEW BOOK</h2>
+	<%= form_for(@book) do |f| %>
+	<p>Title:</p>
+	<%= f.text_field :title %>
+
+	<p>Comment:</p>
+	<%= f.text_area :body %>
+
+	<br>
+	<%= f.submit %>
+	<% end %>
+</div>
