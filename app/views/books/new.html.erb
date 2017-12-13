@@ -2,19 +2,13 @@
 
 	<h2 class="new-section-title">BOOKS</h1>
 	<table>
-		<thead>
-			<tr>
-				<td><p class="books_title">title</p></td>
-				<td><p class="books_body"></p>Comment</td>
-				<td></td>
-			</tr>
-		</thead>
 		<tbody>
 			<% @books.each do |book| %>
 				<tr>
-					<td>A <%= book.title %></td>
-					<td>B <%= truncate(book.body, length: 15) %></td>
-					<td>
+					<td class="books-title-td">
+						<%= link_to "『 #{truncate(book.title, length: 15)} 』", book_path(book) %></td>
+					<td class="books-body-td"><%= truncate(book.body, length: 15) %></td>
+					<td class="books-edit-td">
 						<%= link_to "[Show]", book_path(book) %>
 						<%= link_to "[edit]", edit_book_path(book) %>
 						<%= link_to "[delete]", book_path(book), method: :delete %>
@@ -26,12 +20,8 @@
 
 	<h2 class="new-section-title">NEW BOOK</h2>
 	<%= form_for(@book) do |f| %>
-	<p>Title:</p>
-	<%= f.text_field :title %>
-
-	<p>Comment:</p>
-	<%= f.text_area :body %>
-
+	<%= f.text_field :title, placeholder:"Title" %>
+	<%= f.text_area :body, placeholder:"Comment" %>
 	<br>
 	<%= f.submit %>
 	<% end %>

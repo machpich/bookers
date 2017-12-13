@@ -1,14 +1,11 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<div class="container">
+	<h2 class="new-section-title">EDIT BOOK</h2>
 
-<h2>EDIT BOOK</h2>
-<%= form_for(@book) do |f| %>
-<p>Title:</p>
-<%= f.text_field :title %>
+	<%= form_for(@book) do |f| %>
+	<%= f.text_field :title, placeholder:"Title" %>
+	<%= f.text_area :body, placeholder:"Comment" %>
 
-<p>Comment:</p>
-<%= f.text_area :body %>
+	<%= f.submit %>
+	<% end %>
 
-<br>
-<%= f.submit %>
-<% end %>
+</div>

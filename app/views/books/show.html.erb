@@ -1,6 +1,11 @@
-<h1>Books#show</h1>
-
-<h3><%= @book.title %></h3>
-<p>Comment:</p>
-<p><%= @book.body %></p>
-<p><%= @book.created_at %></p>
+<div class="container show-rayout">
+	<h1 class="show-title"><%= link_to "『 #{@book.title} 』",new_book_path %></h1>
+	<div class="show-body">
+		<p><%= simple_format(@book.body) %></p>
+		<div class="show-body-etc">
+			<%= link_to "[edit]", edit_book_path(@book) %>
+			<%= link_to "[delete]", book_path(@book), method: :delete %>
+			<p class="show-date"><%= @book[:created_at].strftime("%Y-%m-%d %H:%M") %></p>
+		</div>
+	</div>
+</div>
